@@ -59,10 +59,28 @@ class SearchingViewController: UIViewController {
     
     @IBAction func didTapNewTargetButton(sender: UIButton) {
         //add dot to the screen
-        let radarWidth = self.radarBackground.frame.size.width
-        let radarHeight = self.radarBackground.frame.size.height
-        let radarX = self.radarBackground.frame.origin.x
-        let radarY = self.radarBackground.frame.origin.y
+        let radarWidth = self.radarBackground.frame.size.width - 40
+        let radarHeight = self.radarBackground.frame.size.height - 40
+        let radarX = self.radarBackground.frame.origin.x + 40
+        let radarY = self.radarBackground.frame.origin.y + 40
+        let newDotX = radarX + CGFloat(arc4random()%UInt32(radarWidth))
+        let newDotY = radarY + CGFloat(arc4random()%UInt32(radarHeight))
+        let dotFrame = CGRectMake(newDotX, newDotY, 10, 10)
+        let newDot = UIView(frame: dotFrame)
+        newDot.layer.borderColor=self.view.tintColor.CGColor
+        newDot.layer.borderWidth = 2
+        newDot.layer.cornerRadius = newDot.frame.size.width/2
+        newDot.clipsToBounds = true
+        newDot.backgroundColor = UIColor.greenColor()
+        newDot.alpha = 0
+        self.view.addSubview(newDot)
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: nil, animations: { () -> Void in
+            newDot.alpha = 1
+            newDot.transform = CGAffineTransformScale(newDot.transform, 2.0, 2.0)
+        }) { (Bool) -> Void in
+            //
+        }
         
     }
     

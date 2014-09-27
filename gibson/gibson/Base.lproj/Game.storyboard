@@ -37,12 +37,6 @@
                                     <constraint firstAttribute="height" constant="80" id="ilR-oQ-FTu"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for Nearby Gibsons" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odg-m9-2uw">
-                                <rect key="frame" x="16" y="162" width="288" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLx-YS-HrQ">
                                 <rect key="frame" x="16" y="8" width="77" height="30"/>
                                 <state key="normal" title="New Target">
@@ -61,6 +55,12 @@
                                     <action selector="didTapTargetChosenButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Myu-lx-gyl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for Nearby Gibsons" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odg-m9-2uw">
+                                <rect key="frame" x="16" y="83" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -68,6 +68,7 @@
                             <constraint firstItem="Odg-m9-2uw" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4Hk-Ni-eYy"/>
                             <constraint firstItem="TVf-Pc-bZ4" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="607-ry-jnz"/>
                             <constraint firstItem="4ma-uE-Iwt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="EZb-qd-Etk"/>
+                            <constraint firstItem="J9C-64-czC" firstAttribute="top" secondItem="Odg-m9-2uw" secondAttribute="bottom" constant="30" id="EjL-7x-owa"/>
                             <constraint firstAttribute="centerX" secondItem="J9C-64-czC" secondAttribute="centerX" id="Hr8-MZ-Dl9"/>
                             <constraint firstItem="TVf-Pc-bZ4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="MT9-5d-u4d"/>
                             <constraint firstItem="J9C-64-czC" firstAttribute="centerX" secondItem="cHO-sf-wCW" secondAttribute="centerX" id="Md1-jw-Xbl"/>
@@ -77,7 +78,6 @@
                             <constraint firstItem="4ma-uE-Iwt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="mRf-CE-imF"/>
                             <constraint firstItem="J9C-64-czC" firstAttribute="centerY" secondItem="cHO-sf-wCW" secondAttribute="centerY" id="rhQ-Nj-3aV"/>
                             <constraint firstItem="LLx-YS-HrQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="u0D-OG-rST"/>
-                            <constraint firstItem="Odg-m9-2uw" firstAttribute="top" secondItem="4ma-uE-Iwt" secondAttribute="bottom" constant="54" id="xYA-Rt-qGC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1LM-eb-yH0"/>
