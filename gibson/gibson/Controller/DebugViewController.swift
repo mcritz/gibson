@@ -15,9 +15,13 @@ class DebugViewController: UIViewController {
 	required init(coder: NSCoder) {
 		super.init(coder: coder)
 	}
+	
 	override func viewDidAppear(animated: Bool) {
-		if let label = self.label {
-			label.text = "Hello World!"
+		var netManger = NetworkManager()
+		if netManger.isBrowsing {
+			if let label = self.label {
+				label.text = "Network Manger online"
+			}
 		}
 	}
 }
