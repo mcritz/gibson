@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F771F5019D74C100089F8BB /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F771F4F19D74C100089F8BB /* DebugViewController.swift */; };
+		0F771F5419D750100089F8BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F771F5319D750100089F8BB /* NetworkManager.swift */; };
 		5095D22719D74A8A00F409DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095D22619D74A8A00F409DB /* AppDelegate.swift */; };
 		5095D22A19D74A8A00F409DB /* gibson.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5095D22819D74A8A00F409DB /* gibson.xcdatamodeld */; };
 		5095D22C19D74A8A00F409DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095D22B19D74A8A00F409DB /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0F771F4F19D74C100089F8BB /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugViewController.swift; path = Controller/DebugViewController.swift; sourceTree = "<group>"; };
+		0F771F5319D750100089F8BB /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Controller/NetworkManager.swift; sourceTree = "<group>"; };
 		5095D22119D74A8A00F409DB /* gibson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gibson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5095D22519D74A8A00F409DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5095D22619D74A8A00F409DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		0F771F4D19D74B530089F8BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0F771F5319D750100089F8BB /* NetworkManager.swift */,
 				0F771F4F19D74C100089F8BB /* DebugViewController.swift */,
 				5095D22619D74A8A00F409DB /* AppDelegate.swift */,
 				5095D22B19D74A8A00F409DB /* ViewController.swift */,
@@ -244,6 +247,7 @@
 			files = (
 				5095D22C19D74A8A00F409DB /* ViewController.swift in Sources */,
 				5095D22719D74A8A00F409DB /* AppDelegate.swift in Sources */,
+				0F771F5419D750100089F8BB /* NetworkManager.swift in Sources */,
 				0F771F5019D74C100089F8BB /* DebugViewController.swift in Sources */,
 				5095D22A19D74A8A00F409DB /* gibson.xcdatamodeld in Sources */,
 			);
