@@ -101,6 +101,22 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 		nearbyBrowser.delegate = self
 		nearbyAdvertiser.delegate = self
 		session.delegate = self
+		
+		let someDict :NSDictionary = ["key":"value"]
+		sendDictionaryToPeers(someDict)
 
 	}
+	
+	func sendDictionaryToPeers(dict: NSDictionary) {
+		var error: NSError?
+		var encodedData: NSData = NSKeyedArchiver.archivedDataWithRootObject(dict)
+		var didSend: Bool = session.sendData(encodedData, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+		
+		println("didSend: " + didSend.description)
+		println(dict)
+		if let error = error {
+			println("Failed to send data to peers. :'(")
+		}
+	}
+
 }
