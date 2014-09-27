@@ -9,6 +9,18 @@
 import Foundation
 import MultipeerConnectivity
 
+enum NetMessage: Int {
+	case NetMessageHandshake=1
+	case NetMessageNegotiate,
+			NetMessageNegotiateConfirm,
+			NetMessageAttack,
+			NetMessageDefend,
+			NetMessageSteal,
+			NetMessageWin,
+			NetMessageDisconnect
+}
+
+
 //class NetworkManager : NSObject {
 class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
 
@@ -36,6 +48,9 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	}
 	
 	func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) {
+		var notice = NSNotification(name: "didRecieveInvite", object: nil)
+		var noticeCenter = NSNotificationCenter()
+		noticeCenter.postNotification(notice)
 		println("didReceiveInvitationFromPeer")
 	}
 	
