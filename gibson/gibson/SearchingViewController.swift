@@ -8,24 +8,63 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchingViewController: UIViewController {
 
    
     @IBOutlet weak var radarBackground: UIImageView!
-    @IBOutlet var radarRotator: UIImageView!
+    @IBOutlet weak var searchRadarHorizontalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var instructionTextLabel: UILabel!
+    @IBOutlet weak var radarRotator: UIImageView!
+    
     var timer: NSTimer?
+    let gibsonLogoImage = UIImage(named: "gibsonLogo").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.tintColor = UIColor.whiteColor()
+        self.logoImageView.image = self.gibsonLogoImage
+        self.instructionTextLabel.alpha = 0
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "animate", userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
+        self.animateRadarIntoPosition()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func animateRadarIntoPosition() {
+        UIView .animateWithDuration(1.0, delay: 2.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+            self.searchRadarHorizontalConstraint.constant = -120
+            self.view.layoutIfNeeded()
+        }) { (Bool) -> Void in
+            self.animateInstructionTextLabelIntoView()
+        }
+    }
+    
+    func animateInstructionTextLabelIntoView() {
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.instructionTextLabel.alpha = 1
+        })
+    }
 
+    @IBAction func didTapTargetChosenButton(sender: UIButton) {
+    }
+    
+    @IBAction func didTapNewTargetButton(sender: UIButton) {
+        //add dot to the screen
+        let radarWidth = self.radarBackground.frame.size.width
+        let radarHeight = self.radarBackground.frame.size.height
+        let radarX = self.radarBackground.frame.origin.x
+        let radarY = self.radarBackground.frame.origin.y
+        
+    }
     
     func animate() {
         self.rotateImage(self.radarRotator)

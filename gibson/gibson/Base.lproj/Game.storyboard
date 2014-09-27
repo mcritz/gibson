@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NFV-ed-In6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Searching View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="RotateImageTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="SearchingViewController" customModule="gibson" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,34 +17,105 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pac-WZ-Nwe">
-                                <rect key="frame" x="0.0" y="0.0" width="327" height="568"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radarBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="J9C-64-czC">
-                                        <rect key="frame" x="0.0" y="19" width="327" height="568"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radarRotator.png" translatesAutoresizingMaskIntoConstraints="NO" id="cHO-sf-wCW">
-                                        <rect key="frame" x="0.0" y="19" width="327" height="568"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="J9C-64-czC">
+                                <rect key="frame" x="10" y="134" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="QRk-N9-DP2"/>
+                                    <constraint firstAttribute="height" constant="300" id="YDH-ff-lGE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radarRotator" translatesAutoresizingMaskIntoConstraints="NO" id="cHO-sf-wCW">
+                                <rect key="frame" x="10" y="134" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5Q3-nZ-WaP"/>
+                                    <constraint firstAttribute="height" constant="300" id="zVS-um-sET"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gibsonLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4ma-uE-Iwt">
+                                <rect key="frame" x="16" y="28" width="288" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ilR-oQ-FTu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for Nearby Gibsons" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odg-m9-2uw">
+                                <rect key="frame" x="16" y="162" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLx-YS-HrQ">
+                                <rect key="frame" x="16" y="8" width="77" height="30"/>
+                                <state key="normal" title="New Target">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapNewTargetButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zib-U8-Hhp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-Pc-bZ4">
+                                <rect key="frame" x="205" y="8" width="99" height="30"/>
+                                <state key="normal" title="Target Chosen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapTargetChosenButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Myu-lx-gyl"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Odg-m9-2uw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="0rc-ur-ZHT"/>
+                            <constraint firstItem="Odg-m9-2uw" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4Hk-Ni-eYy"/>
+                            <constraint firstItem="TVf-Pc-bZ4" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="607-ry-jnz"/>
+                            <constraint firstItem="4ma-uE-Iwt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="EZb-qd-Etk"/>
+                            <constraint firstAttribute="centerX" secondItem="J9C-64-czC" secondAttribute="centerX" id="Hr8-MZ-Dl9"/>
+                            <constraint firstItem="TVf-Pc-bZ4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="MT9-5d-u4d"/>
+                            <constraint firstItem="J9C-64-czC" firstAttribute="centerX" secondItem="cHO-sf-wCW" secondAttribute="centerX" id="Md1-jw-Xbl"/>
+                            <constraint firstAttribute="centerY" secondItem="J9C-64-czC" secondAttribute="centerY" id="Mpw-ur-fWb"/>
+                            <constraint firstItem="4ma-uE-Iwt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="jIb-IQ-iho"/>
+                            <constraint firstItem="LLx-YS-HrQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="kyt-Ny-Chn"/>
+                            <constraint firstItem="4ma-uE-Iwt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="mRf-CE-imF"/>
+                            <constraint firstItem="J9C-64-czC" firstAttribute="centerY" secondItem="cHO-sf-wCW" secondAttribute="centerY" id="rhQ-Nj-3aV"/>
+                            <constraint firstItem="LLx-YS-HrQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="u0D-OG-rST"/>
+                            <constraint firstItem="Odg-m9-2uw" firstAttribute="top" secondItem="4ma-uE-Iwt" secondAttribute="bottom" constant="54" id="xYA-Rt-qGC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1LM-eb-yH0"/>
                     <connections>
-                        <outlet property="radarBackground" destination="J9C-64-czC" id="rWH-8V-Orj"/>
-                        <outlet property="radarRotator" destination="cHO-sf-wCW" id="qCV-bJ-wNL"/>
+                        <outlet property="instructionTextLabel" destination="Odg-m9-2uw" id="JSy-w2-NYi"/>
+                        <outlet property="logoImageView" destination="4ma-uE-Iwt" id="Gvu-cc-iVS"/>
+                        <outlet property="radarBackground" destination="J9C-64-czC" id="SVE-vv-6bd"/>
+                        <outlet property="radarRotator" destination="cHO-sf-wCW" id="aOg-5u-61N"/>
+                        <outlet property="searchRadarHorizontalConstraint" destination="Mpw-ur-fWb" id="HrV-cI-Doz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="287"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3bV-rc-2ed">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="NFV-ed-In6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U5Q-am-mAg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="NoC-Ee-rAy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMI-Bz-pv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="287"/>
         </scene>
     </scenes>
     <resources>
-        <image name="radarBackground.png" width="600" height="600"/>
-        <image name="radarRotator.png" width="600" height="600"/>
+        <image name="gibsonLogo" width="300" height="112"/>
+        <image name="radarBackground" width="300" height="300"/>
+        <image name="radarRotator" width="300" height="300"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
