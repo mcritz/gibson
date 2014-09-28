@@ -18,12 +18,13 @@ class DefendViewController: UIViewController {
     @IBOutlet weak var coldWarmHotHintTextLabel: UILabel!
     @IBOutlet weak var attackerNameTextLabel: UILabel!
     
-    let defendLogoImage = UIImage(named: "defendLogo").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+	var defendLogoImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.tintColor = UIColor.whiteColor()
-        self.defendLogoImageView.image = self.defendLogoImage
+		defendLogoImage = UIImage(named: "defendLogo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.defendLogoImageView.image! = self.defendLogoImage!
         // Do any additional setup after loading the view.
     }
 

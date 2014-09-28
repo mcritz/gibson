@@ -22,12 +22,13 @@ enum NetMessage: Int {
 
 
 //class NetworkManager : NSObject {
-class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
+class NetworkManager :NSObject, MCBrowserViewControllerDelegate, MCSessionDelegate {
 
-	var nearbyBrowser :MCNearbyServiceBrowser
-	var nearbyAdvertiser :MCNearbyServiceAdvertiser
-	var session :MCSession
-	var peerId :NSString?
+	var browser :MCBrowserViewController!
+	var assistant :MCAdvertiserAssistant!
+	var session :MCSession!
+	var myID :MCPeerID!
+	
 	var playerIndexTimestamp :NSDate?
 	
 	var isBrowsing = false
@@ -51,12 +52,29 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	
 	func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) {
 		var notice = NSNotification(name: "didRecieveInvite", object: nil)
-		var noticeCenter = NSNotificationCenter()
-		noticeCenter.postNotification(notice)
+		NSNotificationCenter.defaultCenter().postNotification(notice)
 		
 		invitationHandler
 		
 		println("didReceiveInvitationFromPeer")
+	}
+	
+	// BrowserViewControllerDelegate
+	func browser(browser: MCNearbyServiceBrowser!, didNotStartBrowsingForPeers error: NSError!) {
+		println("did not start browsing")
+	}
+	
+	func browserViewController(browserViewController: MCBrowserViewController!, shouldPresentNearbyPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) -> Bool {
+		println("should present nearbypeer")
+		return true
+	}
+	
+	func browserViewControllerDidFinish(browserViewController: MCBrowserViewController!) {
+		println("browser did finish")
+	}
+	
+	func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController!) {
+		println("browser cancelled")
 	}
 	
 	// SessionDelegate
@@ -78,7 +96,7 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
 		if (state == MCSessionState.Connected) {
 			var handshake :NSDictionary = [
-				"command" : NetMessage.NetMessageHandshake.toRaw(),
+				"command" : NetMessage.NetMessageHandshake.rawValue,
 				"peerName" : UIDevice.currentDevice().name
 			]
 			sendDictionaryToPeers(handshake)
@@ -89,12 +107,12 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	}
 	// Logics
 	func hasPeer() -> Bool {
-		return self.peerId != nil
+		return self.myID != nil
 	}
 	
 	func disconnect() {
 		let dict :NSDictionary = [
-			"command" : NetMessage.NetMessageDisconnect.toRaw(),
+			"command" : NetMessage.NetMessageDisconnect.rawValue,
 			"status" : "disconnected"
 		]
 		let disconnectNotice = NSNotification(name: "dataRecieved", object: dict)
@@ -114,26 +132,28 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	}
 	
 	override init() {
+		let serviceType = "hackFight"
+		
 		// set MCID to user device name
-		var deviceId = UIDevice.currentDevice().name
-		var myId = MCPeerID(displayName:deviceId)
-		
-		// setup browser
-		nearbyBrowser = MCNearbyServiceBrowser(peer: myId, serviceType: "hack")
-		nearbyBrowser.startBrowsingForPeers()
-		self.isBrowsing = true
-		
-		// setup advertiser
-		nearbyAdvertiser = MCNearbyServiceAdvertiser(peer: myId, discoveryInfo: nil, serviceType: "hack")
-		nearbyAdvertiser.startAdvertisingPeer()
+		var deviceId = UIDevice.currentDevice().name ?? "DEFAULT_BROWSER"
+		self.myID = MCPeerID(displayName: deviceId)
 		
 		// create a session
-		session = MCSession(peer: myId)
+		session = MCSession(peer: myID)
+
+		// setup browser
+		self.browser = MCBrowserViewController(serviceType: serviceType, session: session)
+		self.isBrowsing = true
+		
+		// assistant
+		self.assistant = MCAdvertiserAssistant(serviceType: serviceType, discoveryInfo: nil, session: session)
+		
 		
 		super.init()
-		nearbyBrowser.delegate = self
-		nearbyAdvertiser.delegate = self
+		self.browser.delegate = self
 		session.delegate = self
+		self.assistant.start()
+		println("NetworkManager init")
 	}
 
 }

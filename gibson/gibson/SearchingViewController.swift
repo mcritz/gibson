@@ -18,8 +18,8 @@ class SearchingViewController: UIViewController {
     @IBOutlet weak var radarRotator: UIImageView!
     
     var timer: NSTimer?
-    let gibsonLogoImage = UIImage(named: "gibsonLogo").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-    
+	let gibsonLogoImage = UIImage(named: "gibsonLogo")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.tintColor = UIColor.whiteColor()
@@ -33,8 +33,18 @@ class SearchingViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.animateRadarIntoPosition()
+		self.setupObservers()
     }
+	
+	func setupObservers() -> Void {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("receivedData:"),
+			name: "dataRecieved", object: nil)
+	}
 
+	func receivedData(notification: NSNotification) {
+		println("receivedData! notification: " + notification.description)
+	}
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
