@@ -40,6 +40,8 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 	
 	func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
 		println("FOUND PEER!! WhatWhat!?")
+		println(session.description)
+		browser.invitePeer(peerID, toSession: session, withContext: NSData(), timeout: 0.0)
 	}
 	
 	// AdvertiserDelegate Protocol
@@ -51,6 +53,9 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 		var notice = NSNotification(name: "didRecieveInvite", object: nil)
 		var noticeCenter = NSNotificationCenter()
 		noticeCenter.postNotification(notice)
+		
+		invitationHandler
+		
 		println("didReceiveInvitationFromPeer")
 	}
 	
@@ -71,16 +76,44 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 		println("Session Delegate 5")
 	}
 	func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
-		println("Session Delegate 6")
+		if (state == MCSessionState.Connected) {
+			var handshake :NSDictionary = [
+				"command" : NetMessage.NetMessageHandshake.toRaw(),
+				"peerName" : UIDevice.currentDevice().name
+			]
+			sendDictionaryToPeers(handshake)
+		} else if (state == MCSessionState.NotConnected) {
+			NSLog("No connection")
+			disconnect()
+		}
 	}
-	
 	// Logics
 	func hasPeer() -> Bool {
 		return self.peerId != nil
 	}
 	
+	func disconnect() {
+		let dict :NSDictionary = [
+			"command" : NetMessage.NetMessageDisconnect.toRaw(),
+			"status" : "disconnected"
+		]
+		let disconnectNotice = NSNotification(name: "dataRecieved", object: dict)
+		NSNotificationCenter.defaultCenter().postNotification(disconnectNotice)
+	}
+	
+	func sendDictionaryToPeers(dict: NSDictionary) {
+		var error: NSError?
+		var encodedData: NSData = NSKeyedArchiver.archivedDataWithRootObject(dict)
+		var didSend: Bool = session.sendData(encodedData, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+		
+		println("didSend: " + didSend.description)
+		println(dict)
+		if let error = error {
+			println("Failed to send data to peers. :'(")
+		}
+	}
+	
 	override init() {
-
 		// set MCID to user device name
 		var deviceId = UIDevice.currentDevice().name
 		var myId = MCPeerID(displayName:deviceId)
@@ -101,22 +134,6 @@ class NetworkManager :NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceA
 		nearbyBrowser.delegate = self
 		nearbyAdvertiser.delegate = self
 		session.delegate = self
-		
-		let someDict :NSDictionary = ["key":"value"]
-		sendDictionaryToPeers(someDict)
-
-	}
-	
-	func sendDictionaryToPeers(dict: NSDictionary) {
-		var error: NSError?
-		var encodedData: NSData = NSKeyedArchiver.archivedDataWithRootObject(dict)
-		var didSend: Bool = session.sendData(encodedData, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
-		
-		println("didSend: " + didSend.description)
-		println(dict)
-		if let error = error {
-			println("Failed to send data to peers. :'(")
-		}
 	}
 
 }
