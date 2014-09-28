@@ -24,6 +24,7 @@ class DefendViewController: UIViewController {
         super.viewDidLoad()
         self.view.tintColor = UIColor.whiteColor()
         self.defendLogoImageView.image = self.defendLogoImage
+        self.defendDirectionsView.alpha = 0
         // Do any additional setup after loading the view.
     }
 
@@ -37,6 +38,17 @@ class DefendViewController: UIViewController {
         
     }
     
+    @IBAction func didTapShowViewButton(sender: UIButton) {
+        if (self.defendDirectionsView.alpha == 0) {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.defendDirectionsView.alpha = 1
+            })
+            
+        } else {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.defendDirectionsView.alpha = 0
+            })        }
+    }
 
     /*
     // MARK: - Navigation
