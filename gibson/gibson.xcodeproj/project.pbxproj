@@ -18,6 +18,7 @@
 		5095D24019D74A8A00F409DB /* gibsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095D23F19D74A8A00F409DB /* gibsonTests.swift */; };
 		7386916C19D76E7A003DD4CC /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7386916A19D76E7A003DD4CC /* Game.storyboard */; };
 		7386916E19D76E81003DD4CC /* SearchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386916D19D76E81003DD4CC /* SearchingViewController.swift */; };
+		7386917019D781FF003DD4CC /* DefendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386916F19D781FF003DD4CC /* DefendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		5095D23F19D74A8A00F409DB /* gibsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gibsonTests.swift; sourceTree = "<group>"; };
 		7386916B19D76E7A003DD4CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Game.storyboard; sourceTree = "<group>"; };
 		7386916D19D76E81003DD4CC /* SearchingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
+		7386916F19D781FF003DD4CC /* DefendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				5095D22619D74A8A00F409DB /* AppDelegate.swift */,
 				5095D22B19D74A8A00F409DB /* ViewController.swift */,
 				7386916D19D76E81003DD4CC /* SearchingViewController.swift */,
+				7386916F19D781FF003DD4CC /* DefendViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				5095D22C19D74A8A00F409DB /* ViewController.swift in Sources */,
 				5095D22719D74A8A00F409DB /* AppDelegate.swift in Sources */,
+				7386917019D781FF003DD4CC /* DefendViewController.swift in Sources */,
 				0F771F5419D750100089F8BB /* NetworkManager.swift in Sources */,
 				7386916E19D76E81003DD4CC /* SearchingViewController.swift in Sources */,
 				0F771F5019D74C100089F8BB /* DebugViewController.swift in Sources */,
