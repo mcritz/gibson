@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NFV-ed-In6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NFV-ed-In6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -64,18 +64,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LLx-YS-HrQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="0jN-gX-3Yc"/>
                             <constraint firstItem="Odg-m9-2uw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="0rc-ur-ZHT"/>
+                            <constraint firstItem="TVf-Pc-bZ4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="1ao-mn-Xqa"/>
                             <constraint firstItem="Odg-m9-2uw" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4Hk-Ni-eYy"/>
                             <constraint firstItem="TVf-Pc-bZ4" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="607-ry-jnz"/>
                             <constraint firstItem="4ma-uE-Iwt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="EZb-qd-Etk"/>
                             <constraint firstItem="J9C-64-czC" firstAttribute="top" secondItem="Odg-m9-2uw" secondAttribute="bottom" constant="30" id="EjL-7x-owa"/>
                             <constraint firstAttribute="centerX" secondItem="J9C-64-czC" secondAttribute="centerX" id="Hr8-MZ-Dl9"/>
-                            <constraint firstItem="TVf-Pc-bZ4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="MT9-5d-u4d"/>
                             <constraint firstItem="J9C-64-czC" firstAttribute="centerX" secondItem="cHO-sf-wCW" secondAttribute="centerX" id="Md1-jw-Xbl"/>
                             <constraint firstAttribute="centerY" secondItem="J9C-64-czC" secondAttribute="centerY" id="Mpw-ur-fWb"/>
+                            <constraint firstItem="4ma-uE-Iwt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="iP7-Fi-MBU"/>
                             <constraint firstItem="4ma-uE-Iwt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="jIb-IQ-iho"/>
-                            <constraint firstItem="LLx-YS-HrQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-12" id="kyt-Ny-Chn"/>
-                            <constraint firstItem="4ma-uE-Iwt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="mRf-CE-imF"/>
                             <constraint firstItem="J9C-64-czC" firstAttribute="centerY" secondItem="cHO-sf-wCW" secondAttribute="centerY" id="rhQ-Nj-3aV"/>
                             <constraint firstItem="LLx-YS-HrQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="u0D-OG-rST"/>
                         </constraints>
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="287"/>
+            <point key="canvasLocation" x="576" y="287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3bV-rc-2ed">
@@ -109,7 +109,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMI-Bz-pv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="287"/>
+            <point key="canvasLocation" x="182" y="287"/>
         </scene>
     </scenes>
     <resources>

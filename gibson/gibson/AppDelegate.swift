@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+		
+		var netManger = NetworkManager()
+		if netManger.isBrowsing {
+			let browsingNotice = NSNotification(name: "netManagerIsBrowsing", object: nil)
+			let defaultNotificationCenter = NSNotificationCenter.defaultCenter()
+			defaultNotificationCenter.postNotification(browsingNotice)
+		}
+		
         return true
     }
 
