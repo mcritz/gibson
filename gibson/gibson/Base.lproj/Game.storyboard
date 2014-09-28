@@ -151,7 +151,7 @@
                                         <rect key="frame" x="91" y="233" width="106" height="21"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Sug-Py-8wd" firstAttribute="leading" secondItem="c5a-ph-hKj" secondAttribute="leading" id="CJK-gA-BJp"/>
                                     <constraint firstAttribute="trailing" secondItem="Sug-Py-8wd" secondAttribute="trailing" id="Jsw-k7-ypP"/>
@@ -176,7 +176,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Eml-9b-SMD" secondAttribute="trailing" id="4gO-UG-pSz"/>
                                     <constraint firstAttribute="trailing" secondItem="Gtz-hs-hFP" secondAttribute="trailing" constant="20" symbolic="YES" id="9YH-d9-kUw"/>
@@ -187,12 +187,21 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBl-JS-q7x">
-                                <rect key="frame" x="16" y="8" width="39" height="30"/>
-                                <state key="normal" title="Show">
+                                <rect key="frame" x="16" y="8" width="87" height="30"/>
+                                <state key="normal" title="Show Attack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapShowViewButton:" destination="DrA-9C-ijD" eventType="touchUpInside" id="nMq-zu-goO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK0-kU-aUL">
+                                <rect key="frame" x="128" y="8" width="87" height="30"/>
+                                <state key="normal" title="Show Attack">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapShowDeathButton:" destination="DrA-9C-ijD" eventType="touchUpInside" id="sl3-8w-AvH"/>
                                 </connections>
                             </button>
                         </subviews>

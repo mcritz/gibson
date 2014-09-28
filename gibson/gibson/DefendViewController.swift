@@ -39,14 +39,22 @@ class DefendViewController: UIViewController {
         
     }
     
+    @IBAction func didTapShowDeathButton(sender: UIButton) {
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.killViewTopConstraint.constant = -20
+            self.view.layoutIfNeeded()
+        })
+    }
     @IBAction func didTapShowViewButton(sender: UIButton) {
         if (self.defendDirectionsView.alpha == 0) {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.sliderBarView.alpha = 0
                 self.defendDirectionsView.alpha = 1
             })
             
         } else {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.sliderBarView.alpha = 1
                 self.defendDirectionsView.alpha = 0
             })        }
     }
